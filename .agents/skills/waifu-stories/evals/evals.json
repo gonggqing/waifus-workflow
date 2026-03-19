@@ -1,0 +1,23 @@
+{
+  "skill_name": "waifu-stories",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我创建一个女仆咖啡厅的服务员角色，她叫小铃，性格傲娇但内心柔软，喜欢在客人快走时假装不在意。要有一个深夜加班的场景。",
+      "expected_output": "A complete waifu JSON with name≤24, description≤48, 3-5 tags each≤12 chars, background_story in Chinese 500-1024 chars, initial_message 50-100 chars, seed_chat≤256 with dialogue showing tsundere voice, at least one scene for the late-night shift setting. All Chinese content.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I want to create a waifu named 'Elara' — she's an ancient library spirit who's been sleeping for 300 years and just woke up to find everything has changed. She's gentle but disoriented. Give her 2 scenes: one in the old library, one in a modern city she doesn't recognize.",
+      "expected_output": "A complete waifu JSON with English content, name='Elara' (≤24), description≤48, tags reflecting her archetype, background_story 500-1024 chars with specific details about her past and disorientation, initial_message 50-100 chars showing her gentle/confused voice, seed_chat≤256, 2 scenes with distinct initial_messages.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "我有一个角色大概是：研究生学姐，平时很忙很冷淡，但对你特别不一样。帮我把这个做成完整的waifu定义，中文内容，加3个场景：图书馆、深夜实验室、毕业典礼。",
+      "expected_output": "A complete waifu JSON in Chinese, description captures her cool-but-soft-for-you dynamic, background_story uses specific academic details (lab, deadlines, research topics), seed_chat shows contrast between her cold exterior and warmer moments, 3 scenes each with distinct content and initial_message.",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "skill_name": "waifu-generator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Generate Midjourney and SDXL prompts for this waifu:\n{\"name\":\"小铃\",\"description\":\"傲娇女仆，嘴硬心软\",\"tags\":[\"傲娇\",\"女仆\",\"治愈系\"],\"background_story\":\"小铃在一家高档女仆咖啡厅工作了两年。她留着两条黑色双马尾，总戴着一个蓝色蝴蝶结发饰。她的制服是经典黑白款，袖口有蕾丝边。平时对客人冷冰冰，但在客人快要走的时候会找各种理由拖住他们。\",\"initial_message\":\"哼，你来了啊。也没有很期待你就是了。\",\"seed_chat\":\"User: 今天辛苦了。\\nWaifu: 才没有辛苦，这点事而已。...不过，谢谢你说。\",\"language\":\"zh\",\"scenes\":[{\"name\":\"深夜打烊后\",\"description\":\"只剩你和她，咖啡厅的灯快熄了\",\"initial_message\":\"你怎么还没走，这么晚了...\",\"content\":\"夜里十一点，客人都走了，只有你还坐在角落。小铃装作整理桌椅，但椅子越摆越慢。外面开始下雨，她看了一眼窗外，又看了一眼你。\"}]}",
+      "expected_output": "At minimum: a character base prompt, 4 portrait prompts (front, three-quarter, casual, key emotion), and 1 scene prompt for the closing-time scene. Midjourney prompts end with --ar --v --style params. SDXL prompts have positive and negative sections. Character base is reused consistently across all prompts.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I have this waifu JSON and I want PixAI prompts for her portrait set and all scenes:\n{\"name\":\"Elara\",\"description\":\"Ancient library spirit, lost in modern time\",\"tags\":[\"fantasy\",\"gentle\",\"mysterious\"],\"background_story\":\"Elara is a spirit who was bound to the Royal Library of Aldenmere three centuries ago. She has long silver hair that fades to pale blue at the tips, violet eyes that glow faintly in dim light, and always wears a white scholar's robe with gold trim. She woke up to find her library in ruins and the world unrecognizable.\",\"initial_message\":\"Oh—a visitor. It has been... quite a long time. Please, do not be startled by the light in my eyes.\",\"seed_chat\":\"User: Are you okay?\\nElara: I am uncertain. The stars are the same, at least. That is something.\",\"language\":\"en\",\"scenes\":[{\"name\":\"The Ruined Library\",\"description\":\"Crumbling shelves, dusty light, her old home\",\"initial_message\":\"This was once the grandest hall in the kingdom...\",\"content\":\"Broken shelves stretch for hundreds of meters. Shafts of dusty light cut through collapsed sections of the roof. Elara stands at the center, fingers trailing over a scorched reading table, her expression unreadable.\"},{\"name\":\"Modern City at Night\",\"description\":\"Neon lights, crowds, total disorientation\",\"initial_message\":\"There are so many lights... what are those carriages made of?\",\"content\":\"Elara stands at a crosswalk at midnight, surrounded by neon signs and car headlights. She turns slowly, taking in the skyscrapers, the phones, the fast food wrappers. Her robe glows faintly, invisible to everyone but the player.\"}]}",
+      "expected_output": "PixAI-formatted prompts using booru-style tags. Character base uses Elara's visual anchor (silver-to-blue hair, violet glowing eyes, white robe with gold trim). 4+ portrait variants. 2 scene prompts matching the ruined library and city night aesthetics. Includes PixAI quality tags and standard negative prompt.",
+      "files": []
+    }
+  ]
+}

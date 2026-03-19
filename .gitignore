@@ -1,0 +1,7 @@
+.mcp.json
+.claude/settings.local.json
+.DS_Store
+
+# Ignore worldview content, keep the folder
+worldview/*
+!worldview/.gitkeep
