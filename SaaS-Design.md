@@ -43,6 +43,45 @@ Why submodule, not monorepo:
 - Submodule pins a version. Bump deliberately when skills are tested.
 - Team members can still use skills directly in Claude Code / Cursor without the web app.
 
+### Skill Loading from Submodule
+
+The skill engine discovers skills via a single configurable path:
+
+```typescript
+// lib/skill-engine/config.ts
+export const SKILL_ROOT = path.join(
+  process.env.SKILL_SUBMODULE_PATH ?? 'skills',  // default: ./skills/
+  '.agents/skills'
+);
+```
+
+**Discovery at startup:** Glob `{SKILL_ROOT}/*/SKILL.md` → parse YAML frontmatter (`name`, `description`) → build in-memory routing table. No manifest file needed for MVP — 9 skills, cold parse < 10ms.
+
+**Path isolation — skills vs workspace:**
+
+```
+SKILL_ROOT  (.agents/skills/)       → read-only skill definitions
+                                       skills never write here at runtime
+
+WORKSPACE_ROOT  (per-user storage)  → read-write workspace files
+                                       all tool calls (read_file, write_file)
+                                       resolve paths relative to here
+```
+
+Skills reference `worldview/[slug]/` — those paths are **always relative to the user's workspace**, not the submodule. The tool executor (Section 4) resolves them:
+
+```typescript
+// Tool executor resolves all paths against the user's workspace
+function resolvePath(toolPath: string, workspaceId: string): string {
+  const normalized = path.normalize(toolPath);
+  // Prevent path traversal — must stay inside workspace
+  if (normalized.startsWith('..')) throw new ForbiddenPathError(toolPath);
+  return path.join(getWorkspaceRoot(workspaceId), normalized);
+}
+```
+
+**The skills don't need modification.** They say `./worldview/` — the tool layer translates that to the real storage path (idb-keyval key or S3 prefix). Same skill works in Claude Code (local filesystem) and Studio (virtual workspace).
+
 ---
 
 ## 2. User Model — Same App, Feature Flags
@@ -380,6 +419,41 @@ User Message / Sidebar Click
 │   modifies basics.md → show diff + confirmation prompt
 └─────────────────────────┘
 ```
+
+### Skill Loading Pipeline
+
+How the Prompt Assembler loads a skill from the submodule:
+
+```typescript
+// lib/skill-engine/loader.ts
+import { SKILL_ROOT } from './config';
+
+async function loadSkill(skillId: string) {
+  // 1. Read SKILL.md body (the system prompt)
+  const body = await fs.readFile(
+    path.join(SKILL_ROOT, skillId, 'SKILL.md'), 'utf-8'
+  );
+
+  // 2. Strip YAML frontmatter, keep the body
+  const { content, data: meta } = parseFrontmatter(body);
+
+  // 3. Resolve references/ on demand (when SKILL.md says "read references/X")
+  //    The LLM doesn't get references upfront — they're loaded via tool calls
+  //    or injected when the skill body explicitly includes them
+  const refs = await glob(path.join(SKILL_ROOT, skillId, 'references', '*.md'));
+
+  return { id: skillId, meta, prompt: content, referenceFiles: refs };
+}
+```
+
+The Prompt Assembler then injects a workspace context preamble before the skill prompt:
+
+```
+All file paths are relative to the user's workspace.
+The workspace contains: {tree of user's worldview/ files}
+```
+
+This is how skills written for `./worldview/` work in Studio without modification — the LLM sees the workspace tree and operates on it through the tool layer.
 
 ### Tool Definitions
 
