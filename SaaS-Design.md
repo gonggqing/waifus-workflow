@@ -6,38 +6,46 @@ MVP scope: dog-food the waifu creation pipeline as a web app for the team, then 
 
 ## 1. Repo Structure
 
-**Separate repos. This repo as a git submodule.**
+**Flat Next.js project. This repo as a git submodule under `skills/`.**
 
 ```
-waifus-app/                     ← Next.js monorepo (new repo)
+studio-drawhisper/              ← Next.js project (flat, no monorepo)
 ├── skills/                     ← git submodule → waifus-workflow
 │   ├── .agents/skills/         ← skill definitions (read-only at runtime)
 │   ├── worldview/              ← example data / templates only
 │   └── CLAUDE.md
-├── apps/
-│   └── web/                    ← Next.js app (App Router)
-│       ├── app/
-│       │   ├── (auth)/         ← login, register
-│       │   ├── (workspace)/    ← main app shell
-│       │   │   ├── layout.tsx  ← 3-panel layout
-│       │   │   ├── page.tsx    ← workspace home
-│       │   │   └── [worldId]/  ← worldview workspace
-│       │   └── api/
-│       │       ├── chat/       ← streaming LLM endpoint
-│       │       ├── files/      ← workspace file CRUD
-│       │       └── skills/     ← skill execution
-│       ├── components/
-│       │   ├── sidebar/
-│       │   ├── chat/
-│       │   └── file-viewer/
-│       └── lib/
-│           ├── skill-engine/   ← skill parser + prompt assembler
-│           ├── file-store/     ← workspace file management
-│           └── llm/            ← LLM client (streaming)
+├── app/                        ← Next.js App Router
+│   ├── (auth)/                 ← login, register
+│   ├── (workspace)/            ← main app shell
+│   │   ├── layout.tsx          ← 3-panel layout
+│   │   ├── page.tsx            ← workspace home
+│   │   └── [worldId]/          ← worldview workspace
+│   └── api/
+│       ├── chat/               ← streaming LLM endpoint
+│       ├── files/              ← workspace file CRUD
+│       └── skills/             ← skill execution
+├── components/
+│   ├── sidebar/
+│   ├── chat/
+│   └── file-viewer/
+├── lib/
+│   ├── skill-engine/           ← skill parser + prompt assembler
+│   ├── file-store/             ← workspace file management
+│   └── llm/                    ← LLM client (streaming)
+├── public/
+├── next.config.ts
+├── tsconfig.json
 └── package.json
 ```
 
-Why submodule, not monorepo:
+Why flat, not monorepo:
+- This repo has ONE app — Studio. No shared packages to extract yet.
+- DrawHisper (the companion app) is a completely separate repo and Vercel project.
+- Shared concerns (auth config, DB schema) are better handled as npm packages or environment config, not monorepo workspaces.
+- Flat structure = simpler imports (`@/lib/...`), no workspace indirection, faster `npm install`.
+- Can restructure to a monorepo later if a real need arises (shared UI library, shared DB package).
+
+Why submodule:
 - Skills = markdown + eval scripts. App = Next.js + DB + auth. Different lifecycles.
 - Skill iteration doesn't require app rebuild. UI fixes don't touch skill definitions.
 - Submodule pins a version. Bump deliberately when skills are tested.
