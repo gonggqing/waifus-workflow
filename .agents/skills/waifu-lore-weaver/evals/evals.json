@@ -1,0 +1,51 @@
+{
+  "skill_name": "waifu-lore-weaver",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "给余烬生成 lore 文件，她是末世废土世界观「末世废土」里的独立向导角色",
+      "expected_output": "Generates events.md (5-8 events), secrets.md (6-9 secrets across 3 tiers), relationships.md (covers 苦艾 and 霜刃 at minimum), diaries.md (5-8 entries in 余烬's voice). Write-back check identifies any world-level events or new relationship info. Files land under worldview/moshi-feitu/yu-jin/.",
+      "files": [
+        "worldview/moshi-feitu/yu-jin/basics.md",
+        "worldview/moshi-feitu/yu-jin/concept-arts.md",
+        "worldview/moshi-feitu/world.md",
+        "worldview/moshi-feitu/factions.md",
+        "worldview/moshi-feitu/timeline.md",
+        "worldview/moshi-feitu/characters.md",
+        "worldview/moshi-feitu/shuang-ren/basics.md",
+        "worldview/moshi-feitu/ku-ai/basics.md"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "为云笙添加深度 lore，她是玄霄宗世界观里禁书阁的文书",
+      "expected_output": "Generates all 4 lore files for 云笙. relationships.md covers at least 苍鸢. diaries.md uses 云笙's voice (likely restrained, classical Chinese inflections given xianxia setting). events.md connects to the worldview's timeline. Secrets should reflect her having read the forbidden 天命谶卷·残编.",
+      "files": [
+        "worldview/xuanxiao-zong/yun-sheng/basics.md",
+        "worldview/xuanxiao-zong/yun-sheng/concept-arts.md",
+        "worldview/xuanxiao-zong/world.md",
+        "worldview/xuanxiao-zong/factions.md",
+        "worldview/xuanxiao-zong/timeline.md",
+        "worldview/xuanxiao-zong/characters.md",
+        "worldview/xuanxiao-zong/cang-yuan/basics.md"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "余烬已经有 lore 文件了，末世废土世界观刚加了一个新的世界事件「铁壁联盟第三次清扫行动」，帮她的 lore 追加相关内容",
+      "expected_output": "Runs in Append mode — reads existing lore files first, then appends: 1 new event in events.md about the sweep operation, potential new secret entries if the event reveals hidden info, relationship updates if 霜刃 is involved in the sweep, 1-2 new diary entries reacting to the event. Does not duplicate existing content. May write back the new event to timeline.md if not already there.",
+      "files": [
+        "worldview/moshi-feitu/yu-jin/basics.md",
+        "worldview/moshi-feitu/yu-jin/events.md",
+        "worldview/moshi-feitu/yu-jin/secrets.md",
+        "worldview/moshi-feitu/yu-jin/relationships.md",
+        "worldview/moshi-feitu/yu-jin/diaries.md",
+        "worldview/moshi-feitu/world.md",
+        "worldview/moshi-feitu/factions.md",
+        "worldview/moshi-feitu/timeline.md",
+        "worldview/moshi-feitu/shuang-ren/basics.md",
+        "worldview/moshi-feitu/ku-ai/basics.md"
+      ]
+    }
+  ]
+}

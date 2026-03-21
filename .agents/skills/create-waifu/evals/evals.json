@@ -1,0 +1,43 @@
+{
+  "skill_name": "create-waifu",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "创建一个新角色，赛博朋克世界观，女黑客，性格冷淡但偶尔毒舌很可爱。年龄20出头，外貌偏中性帅气。和用户是在暗网上认识的网友，第一次线下见面。给她2个场景。",
+      "expected_output": "Full pipeline output: a new worldview folder under worldview/ with world.md, factions.md, timeline.md, characters.md; a character folder with basics.md (sections 1-8) and 2 scene files; basics.md section 8 contains SDXL image prompts with base prompts, 4+ portraits, and scene variants. All content in native Chinese.",
+      "files": [],
+      "expectations": [
+        "A worldview folder is created under worldview/ with a cyberpunk-themed slug",
+        "world.md exists with 世界概览, 世界规则, and 文化细节 sections",
+        "factions.md exists with at least one faction or location",
+        "timeline.md exists with at least one historical event",
+        "characters.md exists with an entry for the new character including file path",
+        "Character basics.md has sections 1 through 8 with Chinese headers",
+        "basics.md 外貌 section describes androgynous/cool appearance traits",
+        "basics.md 个性特质 reflects cold personality with occasional sharp wit",
+        "At least 2 scene .md files exist with 场景描述, 开场白, and 场景内容",
+        "Section 8 contains image prompts with at least one base prompt and 4 portraits",
+        "开场白 is in-character first-person, not a generic greeting",
+        "All Chinese prose reads as native quality, not translated English"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "我想在之前创建的赛博朋克世界里加一个新角色。她是义体改造师，30岁左右，成熟稳重，说话温柔但手上的活从不含糊。和用户是老客户关系。3个场景：改造工坊、深夜酒吧聊天、某次紧急修复。",
+      "expected_output": "Pipeline uses existing worldview: reads world.md and characters.md for context, references existing factions/locations in the character brief. Creates character folder inside the existing worldview directory. Updates characters.md with the new entry. Does NOT rewrite world.md or overwrite existing entries. basics.md references specific world details (not generic cyberpunk tropes). 3 scene files created.",
+      "files": [],
+      "expectations": [
+        "No new worldview folder is created — character goes into the existing cyberpunk worldview",
+        "characters.md is updated (appended) with the new character entry",
+        "New character basics.md 世界观 section references specific world details from world.md",
+        "At least one scene references a location from factions.md",
+        "basics.md 背景介绍 mentions the existing world's factions or technology",
+        "3 scene .md files created with distinct moods (workshop, bar, emergency)",
+        "Existing worldview files are not rewritten — only appended if needed",
+        "Image prompts in section 8 use the mature/steady character's appearance consistently",
+        "开场白 reflects warm professional tone, not cold or generic",
+        "If the new character has relationships with existing characters, Stage 3b flags or writes them"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "skill_name": "create-campaign",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我给末世废土世界观做一个 campaign，重点推余烬这个角色，目标是拉新，主打 Twitter 和 TikTok",
+      "expected_output": "A campaign focused on the moshi-feitu worldview with yu-jin as the primary character. Should produce strategy.md (acquisition goal, Twitter+TikTok focused), cast.md (yu-jin facet analysis), twitter.md, tiktok.md, and video-prompts/ with character PV and mood pieces. Video prompts should use cut-based composition (2 cuts × 12s for PV) with a transition strategy appropriate to yu-jin's personality. All prompts in English, no text in video prompts.",
+      "files": [],
+      "expectations": [
+        "strategy.md exists under worldview/moshi-feitu/campaign/ with a valid slug",
+        "cast.md contains yu-jin's core tension and per-platform promotional facets",
+        "twitter.md contains image prompts and video prompts with English-only content",
+        "tiktok.md contains vertical video scripts with BGM and subtitle timing",
+        "video-prompts/character-pvs.md has 2-cut structure with transition strategy specified",
+        "No Chinese text in video prompts — all Chinese dialogue noted as post-production subtitles",
+        "Video cuts are each ≤12s with proper shot/subject/action/setting/lighting/style structure"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I want a full campaign for xuanxiao-zong (玄霄宗), using both yun-sheng and cang-yuan. This is a brand awareness campaign — I want all 5 platforms. Make the world teaser epic.",
+      "expected_output": "Multi-character brand campaign for xuanxiao-zong xianxia world. Should produce all output files (strategy, cast, reddit, twitter, tiktok, xiaohongshu, discord) plus video-prompts/. The world teaser should use 3 cuts × 12s with Progressive Reveal strategy (world → characters → conflict). Character PVs should consider High Contrast for characters with hidden sides. Cast analysis should differentiate the two characters' promotional facets across platforms.",
+      "files": [],
+      "expectations": [
+        "strategy.md specifies 'Brand' purpose with both characters listed",
+        "cast.md has separate entries for yun-sheng and cang-yuan with different promotional facets",
+        "All 5 platform files generated (reddit.md, twitter.md, tiktok.md, xiaohongshu.md, discord.md)",
+        "video-prompts/world-teaser.md has 3 cuts with Progressive Reveal structure (aerial → characters → conflict)",
+        "video-prompts/character-pvs.md has separate PVs for each character with appropriate transition strategies",
+        "Character visual base inherited from concept-arts.md, scene backgrounds from concept-art/",
+        "xiaohongshu.md uses Chinese language with emotional tone, not tech curiosity"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "给苦艾做一个情绪向的小红书+Discord campaign，不需要大制作，就想做一些日常情绪内容来维持社区活跃度",
+      "expected_output": "A retention-focused, intimate campaign for ku-ai (post-apocalyptic world). Should focus on xiaohongshu (emotional image cards + mood piece video) and Discord (daily push content, morning messages, random events). Strategy should be 'Retention'. Video content should be mood pieces (1 cut × 12s) with Emotional Escalation or simple static shots. No world teaser needed. Tone should be warm/melancholic matching ku-ai's personality.",
+      "files": [],
+      "expectations": [
+        "strategy.md specifies 'Retention' purpose focused on community engagement",
+        "Only xiaohongshu.md and discord.md generated (no reddit/twitter/tiktok)",
+        "xiaohongshu.md has 3-6 image cards with unified color palette and emotional copy in Chinese",
+        "discord.md has 5-7 daily push variants in ku-ai's voice",
+        "video-prompts/mood-pieces.md has 1-cut mood pieces (12s), no multi-cut PVs",
+        "No world teaser generated — this is not a brand campaign",
+        "Emotional tone matches ku-ai's character from basics.md"
+      ]
+    }
+  ]
+}

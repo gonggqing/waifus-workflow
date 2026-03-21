@@ -39,20 +39,24 @@ claude .
 
 ### `create-waifu` — Full Creation Wizard (Start Here)
 
-The recommended entry point. Walks you through 4 steps to define a character, then automatically runs the full pipeline.
+The recommended entry point. Two modes: **Plan Mode** (guided 4-step wizard) and **Agent Mode** (zero-friction proposals).
 
-**Trigger phrases:**
+**Plan Mode triggers:**
 > "create waifu" · "新建角色" · "make a waifu" · "我要创建一个角色"
+
+**Agent Mode triggers:**
+> "/a" · "auto" · "自动" · "/create-waifu agent"
 
 **What it does:**
 1. Checks for existing worldviews in `./worldview/`
-2. Guides you through world, appearance, personality, and character core
-3. Proposes a name and asks for confirmation
-4. Runs all pipeline stages automatically:
+2. **Plan Mode:** Guides you through world (16 presets), appearance, personality, and character core
+3. **Agent Mode:** Scans existing worlds + generates new proposals, you pick one
+4. At confirmation: `y` to create, `r` to re-roll (new character, same world), `0` for fully random
+5. Runs all pipeline stages automatically:
    - `world-building` — loads worldview context
    - `waifu-stories` — generates the character markdown
    - `waifu-generator` — generates image prompts
-   - File assembly — writes all output files to `worldview/[world-slug]/[character-slug]/`
+   - File assembly — writes all output files
    - `world-building` — updates or creates worldview files
 
 **Output structure:**
@@ -73,10 +77,10 @@ worldview/
 
 ### `waifu-stories` — Character Writer
 
-Crafts a structured character profile in Markdown and JSON. Use this standalone if you already have a world in mind and just want to write a character without the full wizard.
+Crafts a structured character profile in Markdown and JSON. Use this standalone if you already have a clear character concept and want to go straight to a structured definition without the full wizard.
 
 **Trigger phrases:**
-> "create waifu" · "waifu profile" · "角色设定" · "人物背景" · paste a character idea in Chinese
+> "waifu profile" · "character definition" · "角色设定" · "人物背景" · paste a character idea
 
 **Input:** A rough description, a few keywords, or a character concept in any language.
 
@@ -107,12 +111,30 @@ Turns a character definition into ready-to-use image prompts for Midjourney, SDX
 
 ---
 
+### `edit-waifu` — Character Editor
+
+Modifies existing characters, scenes, and worldview files. Use after creation when something doesn't feel right or you want to expand.
+
+**Trigger phrases:**
+> "编辑角色" · "修改角色" · "edit waifu" · "改场景" · "add scene" · "换性格" · "这个角色不太对" · "换个开场白"
+
+**Five edit modes:**
+- **Targeted edit** — change a specific section (opening line, personality, appearance…)
+- **Iteration** — "this doesn't feel right" → offers quick-swap alternatives
+- **Add scene** — new scene file in four-field format
+- **Expand scene** — thicken an existing scene with more depth
+- **Worldview edit** — modify lore, factions, locations, timeline
+
+Cascading changes are handled automatically (e.g., appearance change → offer to regenerate image prompts).
+
+---
+
 ### `world-building` — Worldview Manager
 
 Creates and maintains the `worldview/[slug]/` directories that give characters a shared context.
 
 **Trigger phrases:**
-> "世界观" · "world building" · "扩展世界观" · "update worldview"
+> "世界观" · "world building" · "扩展世界观" · "update worldview" · "势力" · "时间线" · "添加地点"
 
 **Two modes:**
 - **Mode 1 — Create new worldview:** Called after the first character in a new world. Generates `world.md`, `factions.md`, `timeline.md`, `characters.md` from the character's backstory.
@@ -140,7 +162,14 @@ See `.agents/skills/skill-creator/SKILL.md` for full documentation.
 ```
 You: create waifu
 ```
-Follow the 4-step wizard. At the end, files are written to `worldview/`.
+Follow the 4-step wizard (Plan Mode). Pick from 16 worldview presets or describe your own. At confirmation, `y` to create, `r` to re-roll, `0` for fully random.
+
+### Quick-create with Agent Mode
+
+```
+You: /a
+```
+Get concrete character proposals based on your existing worlds + fresh ideas. Pick a number and go.
 
 ### Add a character to an existing world
 

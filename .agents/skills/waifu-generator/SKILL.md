@@ -1,6 +1,6 @@
 ---
 name: waifu-generator
-description: Generate image generation prompts for a waifu character from their definition file or JSON. Use this skill whenever the user wants to visualize a waifu, generate Midjourney/SDXL/PixAI/LiblibAI prompts, create a character sheet, get portrait variants (expressions, outfits, angles), or generate scene illustrations. Trigger on: "generate image", "MJ prompt", "SDXL prompt", "画图", "生成提示词", "出图", "character art", "scene illustration", or when the user wants to visualize a waifu right after creating one with waifu-stories.
+description: Generate image generation prompts for a waifu character from their definition file or JSON. Use this skill whenever the user wants to visualize a waifu, generate Midjourney/SDXL/PixAI/LiblibAI prompts, create a character sheet, get portrait variants (expressions, outfits, angles), or generate scene illustrations. Trigger on: "generate image", "MJ prompt", "SDXL prompt", "画图", "生成提示词", "出图", "character art", "scene illustration", or when the user wants to visualize a waifu. Also triggered by edit-waifu when appearance changes require prompt regeneration.
 ---
 
 # Waifu Generator
@@ -37,7 +37,9 @@ If no explicit appearance details exist, infer from archetype and tags. Flag all
 
 ## Step 1 — Build the visual profile
 
-Before writing any prompts, extract:
+Before writing any prompts, read `references/platforms.md` for the target platform's syntax, parameters, and negative prompts.
+
+Then extract:
 - **Core appearance** — 3–5 traits that must appear in every prompt (these become the base)
 - **Outfits** — signature outfit; any secondary outfit mentioned or implied
 - **Default expression** — her resting emotional state
@@ -101,10 +103,12 @@ Useful variant strategies:
 
 ## Step 5 — Output format
 
+Write the output to `concept-arts.md` in the character's folder (e.g., `worldview/[worldview-slug]/[character-slug]/concept-arts.md`), **not** inside `basics.md`. This keeps narrative definition and visual prompts cleanly separated.
+
 Group by platform. Within each platform, order: bases → portraits → scenes.
 
 ```
-# [角色名] — 图像生成提示词
+# [角色名] — 视觉概念 / Concept Arts
 
 ## [Platform]
 

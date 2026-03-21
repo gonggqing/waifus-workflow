@@ -1,0 +1,49 @@
+{
+  "skill_name": "edit-waifu",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "艾莉亚这个角色的开场白太长了，而且感觉不够傲娇。帮我换一个更短更有个性的开场白，同时看看初始对话是不是也要调整。",
+      "expected_output": "Locates 艾莉亚 in worldview/, reads her basics.md, shows the current 开场白, proposes 2-3 shorter alternatives that better fit her lazy-tsundere personality, applies the user's choice, then checks 初始对话 for voice consistency and suggests fixes if needed.",
+      "files": [],
+      "expectations": [
+        "Correctly locates the character's basics.md file in the worldview directory",
+        "Shows the current 开场白 before proposing changes",
+        "Offers 2-3 alternative opening lines, each shorter and more in-character",
+        "Alternatives match the character's established voice (lazy, tsundere, reluctant)",
+        "Checks 初始对话 for consistency with the new opening line",
+        "Only modifies the targeted sections — rest of basics.md stays untouched",
+        "Reports what changed after editing"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "给赛博朋克世界的那个黑客角色加一个新场景：凌晨三点在天台上抽烟，看着城市的霓虹灯，突然接到一个匿名委托。",
+      "expected_output": "Creates a new scene .md file in the character's folder using the four-field format (场景描述, 开场白, 场景内容). Scene content captures the rooftop atmosphere with cyberpunk sensory details. Offers to generate image prompts for the new scene and append to section 8.",
+      "files": [],
+      "expectations": [
+        "Locates the correct character in the cyberpunk worldview",
+        "Creates a new scene .md file with proper slug naming",
+        "Scene file uses the four-field format: 场景描述, 开场白, 场景内容",
+        "场景内容 has cyberpunk atmosphere (neon, city lights, rooftop details) within 600 chars",
+        "开场白 is in-character and fits the rooftop mood",
+        "Offers to generate scene image prompts for section 8",
+        "Does not modify existing scene files or character basics.md (unless adding prompts)"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "这个角色感觉太平了，性格描述太泛了，能不能让她更有记忆点？我也说不上来具体哪里不对。",
+      "expected_output": "Mode B iteration: asks one focusing question to narrow down the issue, then proposes concrete changes — 2-3 alternative initial_messages, a revised personality angle with specific behavioral quirks, maybe a new 标志性细节. Shows before/after for each proposed change.",
+      "files": [],
+      "expectations": [
+        "Asks a focusing question rather than dumping 5 questions at once",
+        "Proposes specific, concrete changes — not vague advice",
+        "Offers alternative initial_messages as quick-swap options",
+        "Suggests adding specific behavioral quirks or contradictions to 个性特质",
+        "Shows before/after comparison for proposed changes",
+        "Does not rewrite the entire character — targets the personality sections"
+      ]
+    }
+  ]
+}

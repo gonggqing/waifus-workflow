@@ -1,6 +1,6 @@
 ---
 name: waifu-stories
-description: Create and structure JSON-based waifu character definitions and their scenes. Use this skill whenever the user wants to create a waifu character, write a character profile, define or add scenes to a waifu, craft background stories, write initial greetings, or build seed-chat dialogue. Trigger on keywords like "create waifu", "waifu profile", "add scene", "character story", "角色设定", "人物背景", "剧情", "场景". Also use when the user pastes character ideas in Chinese or asks to flesh out a character concept into a structured definition.
+description: Internal character authoring engine — generates the JSON and markdown definition for a single waifu character. Called by create-waifu during the pipeline; also usable standalone when you already have a clear character concept and want to go straight to a structured definition without the guided wizard. Trigger on: "waifu profile", "character definition", "角色设定", "人物背景", or when the user pastes a character idea and wants it turned into a structured JSON/markdown definition. If the user just says "create a waifu" without details, prefer create-waifu (the wizard) instead.
 ---
 
 # Waifu Stories
@@ -70,10 +70,11 @@ If input is in Chinese, count characters — Chinese chars count as 1 each.
 
 When producing the full waifu definition as a markdown file, follow the structure from `references/examples.md` exactly. Key conventions:
 
-- Section headers are numbered and in Chinese only — no bilingual labels (e.g., **4. 背景介绍**, not **4. 背景介绍 | Instruction**)
-- Sub-section labels are Chinese only (e.g., **角色定义**, **外貌（不主动提及）**, **个性特质**, **互动风格**)
+- Section headers use bilingual format: **4. 背景介绍 / Background** — this keeps files readable across languages (see `create-waifu/references/file-structure.md` for the full template)
+- Sub-section labels stay Chinese only (e.g., **角色定义**, **外貌（不主动提及）**, **个性特质**, **互动风格**) — these are internal structure, not navigation headings
 - Appearance sub-section should note **（不主动提及）** — the character doesn't volunteer her own description
 - Scene sections follow the four-field structure: 场景描述 · 开场白 · 场景内容
+- **Section 2 (世界观 / Worldview):** When called from the create-waifu pipeline with worldview context, copy the 世界摘要 / World Abstract from `world.md` directly — it's already sized and tuned for character-card use. Don't re-summarize or paraphrase. When standalone without worldview files, write a brief world description (~300–500 chars) based on what the user provided
 
 ## How to Create a Waifu
 
