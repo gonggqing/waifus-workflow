@@ -30,7 +30,8 @@ All skills share the **worldview directory as a blackboard** — the single sour
 ┌─────────────────────────────────────────────────────────┐
 │          Worldview Directory (shared state)             │
 │                                                         │
-│  world.md · factions.md · timeline.md · characters.md   │
+│  world.md · factions.md · locations.md · timeline.md    │
+│  characters.md                                          │
 │  [char-slug]/basics.md · concept-arts.md · scenes       │
 │  [char-slug]/events.md · secrets.md · relationships.md  │
 │  stories/[story-slug]/...                               │
@@ -82,7 +83,8 @@ Story skills follow the same write-back principles as lore-weaver:
 | Trigger | Target | What |
 |---------|--------|------|
 | New character introduced in story | Flag for user | "Run create-waifu for [X]" |
-| Story reveals new location/faction | factions.md | Append entry |
+| Story reveals new faction | factions.md | Append entry |
+| Story reveals new location | locations.md | Append entry |
 | Story event has world-level impact | timeline.md | Append event |
 | Character growth during story | basics.md | Subtle update (foreshadow, not spoil) |
 | Contradiction with existing world | Flag for user | "Conflict detected: [details]" |
@@ -268,7 +270,7 @@ worldview/[worldview-slug]/stories/[story-slug]/
 
 **Write-back:** This is where new world elements surface most often. When designing beats, plot-weaver identifies:
 - "This chapter needs a new character [X] — role: [description]"
-- "This location doesn't exist yet — suggest adding to factions.md"
+- "This location doesn't exist yet — suggest adding to locations.md"
 - "This event should be reflected in timeline.md"
 
 These become actionable items for the user, not automatic changes.
@@ -327,7 +329,7 @@ worldview/[worldview-slug]/stories/[story-slug]/
 ```
 ┌────────────────────────────────────────────────────────────────┐
 │                 Worldview Directory (blackboard)               │
-│  world.md · factions.md · timeline.md · characters.md          │
+│  world.md · factions.md · locations.md · timeline.md · characters.md │
 │  [character]/basics.md · scenes · lore files                   │
 │  stories/[story]/premise · arcs · structure · chapters · text  │
 └──────┬──────────────────────────────────────┬──────────────────┘

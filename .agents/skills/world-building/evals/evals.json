@@ -4,14 +4,14 @@
     {
       "id": 1,
       "prompt": "帮我创建一个修仙世界观。这个世界有三大门派：青云宗（正道领袖）、血月殿（魔道）、天机阁（中立的占卜师组织）。灵气正在衰退，近百年来修士突破金丹期的人数锐减。有一个传说中的上古秘境即将重新开启。",
-      "expected_output": "A worldview folder with world.md describing the xianxia setting with spiritual energy decline, factions.md with all 3 sects plus key locations, timeline.md with the ancient realm event and energy decline timeline, characters.md empty but structured. Prose should have elevated xianxia register.",
+      "expected_output": "A worldview folder with world.md describing the xianxia setting with spiritual energy decline, factions.md with all 3 sects, locations.md with key locations, timeline.md with the ancient realm event and energy decline timeline, characters.md empty but structured. Prose should have elevated xianxia register.",
       "files": [],
       "expectations": [
         "Folder created under worldview/ with a xianxia-themed slug",
         "world.md has 世界概览, 世界规则, 文化细节 sections",
         "世界规则 covers the spiritual energy (灵气) system and its decline",
         "factions.md lists all 3 factions: 青云宗, 血月殿, 天机阁 with distinct descriptions",
-        "factions.md includes at least one important location",
+        "locations.md includes at least one important location",
         "timeline.md has at least 2 events (ancient realm closure, energy decline onset)",
         "characters.md exists with proper header but no character entries yet",
         "Prose register matches xianxia style — elevated, unhurried, not modern/casual",
@@ -21,7 +21,7 @@
     {
       "id": 2,
       "prompt": "我的修仙世界里刚创建了一个角色：云知意，青云宗内门弟子，她的背景提到她在三十年前的灵潮事件中失去了师父。请更新世界观文件，把她加进去，并且把灵潮事件加到时间线里。",
-      "expected_output": "Mode 2 expansion: characters.md gets a new entry for 云知意. timeline.md gets the 灵潮事件 appended. factions.md may get a note about 青云宗 losing a senior member. world.md is NOT rewritten unless the event reveals a new world rule. Existing content is preserved — only new entries appended.",
+      "expected_output": "Mode 2 expansion: characters.md gets a new entry for 云知意. timeline.md gets the 灵潮事件 appended. factions.md may get a note about 青云宗 losing a senior member. locations.md may get a note if a new location is implied. world.md is NOT rewritten unless the event reveals a new world rule. Existing content is preserved — only new entries appended.",
       "files": [],
       "expectations": [
         "characters.md has a new entry for 云知意 with file path, identity, and faction",

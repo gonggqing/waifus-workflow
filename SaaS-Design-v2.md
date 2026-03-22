@@ -86,7 +86,7 @@ The center panel hosts the **primary workspace content** based on sidebar mode. 
    - World overview dashboard
    - Timeline view
    - Faction relationship graph
-   - Quick-edit cards for world.md, factions.md, timeline.md
+   - Quick-edit cards for world.md, factions.md, locations.md, timeline.md
 
 4. **FileExplorerPanel** (Assets/Files) — *Not yet built*
    - Full workspace file tree

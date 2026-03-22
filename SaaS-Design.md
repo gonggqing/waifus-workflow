@@ -245,7 +245,8 @@ FILES
 ──────────────────────────────────────────
   玄霄宗/
   ├─ world.md                    2.1K
-  ├─ factions.md                 3.4K
+  ├─ factions.md                 2.0K
+  ├─ locations.md                1.8K
   ├─ timeline.md                 1.2K
   ├─ characters.md               0.8K
   ├─ concept-art/
@@ -293,14 +294,15 @@ Implementation: shadcn/ui `<CommandDialog>` (wraps cmdk). Categories: Skills (we
 
 *Collapsed (default after completion):*
 ```
-  ✓ Read 4 worldview files · 7.5K                        ⌄
+  ✓ Read 5 worldview files · 8.9K                        ⌄
 ```
 
 *Expanded on click:*
 ```
-  ✓ Read 4 worldview files · 7.5K                        ⌃
+  ✓ Read 5 worldview files · 8.9K                        ⌃
     world.md         2.1K    ✓
-    factions.md      3.4K    ✓
+    factions.md      2.0K    ✓
+    locations.md     1.8K    ✓
     characters.md    0.8K    ✓
     timeline.md      1.2K    ✓
 ```
@@ -423,7 +425,7 @@ User Message / Sidebar Click
 ┌─────────────────────────┐
 │   Write-back Handler    │ ← detects and surfaces write-back actions
 │                         │
-│   When LLM writes to timeline.md, factions.md, or
+│   When LLM writes to timeline.md, locations.md, factions.md, or
 │   modifies basics.md → show diff + confirmation prompt
 └─────────────────────────┘
 ```
@@ -513,7 +515,7 @@ Tool calls render as **collapsible summary bars** (see Section 3 — Center pane
 - Tool bars use `--bg-elevated` background, `radius-md`, 1px border in `--border-subtle`
 - No heavy box-drawing characters — use CSS borders and padding
 
-**Write-back detection:** When the LLM writes to timeline.md, factions.md, or modifies another character's basics.md, the write-back handler (see Section 8) intercepts and surfaces a confirmation card.
+**Write-back detection:** When the LLM writes to timeline.md, locations.md, factions.md, or modifies another character's basics.md, the write-back handler (see Section 8) intercepts and surfaces a confirmation card.
 
 ### Streaming UX
 
@@ -535,6 +537,7 @@ Each user workspace IS a worldview directory — the same structure this repo pr
 workspace/
 ├── world.md
 ├── factions.md
+├── locations.md
 ├── timeline.md
 ├── characters.md
 ├── concept-art/
@@ -582,7 +585,7 @@ Workspace files
 
 The blackboard pattern depends on files being addressable by **path**. If files were database rows:
 - Tool definitions would need database queries instead of file paths
-- Skill prompts that reference "read factions.md" would need translation
+- Skill prompts that reference "read factions.md" or "read locations.md" would need translation
 - The entire skill library (SKILL.md files) was designed around filesystem operations
 - No migration cost from Claude Code → web app: same mental model
 
@@ -728,7 +731,7 @@ For MVP, keyword matching is fine. The skill descriptions already have comprehen
 
 ## 8. Write-Back UX
 
-When the LLM modifies shared files (timeline.md, factions.md, basics.md), the UI surfaces this prominently:
+When the LLM modifies shared files (timeline.md, locations.md, factions.md, basics.md), the UI surfaces this prominently:
 
 ```
 ┌─ ⚡ Write-back detected ─────────────────────────┐

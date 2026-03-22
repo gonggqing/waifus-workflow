@@ -11,6 +11,7 @@ When lore-weaver generates content, it may discover information that belongs in 
 | Deep secret reveals entirely new core motivation/trauma | basics.md「背景介绍」 | One vague foreshadowing line (never spoil the secret) | Rare |
 | Event has world-level impact (not just personal) | timeline.md | One objective record line | Occasional |
 | Secrets/events reveal new faction information | factions.md | Supplement entry | Rare |
+| Events/secrets reveal new location details | locations.md | Supplement entry | Rare |
 | Event has major impact on a related character | Related character's events.md | Append entry (from their perspective) | Occasional |
 | Relationship discovers important person not in basics.md | basics.md「关联角色」 | Append one-line summary | Occasional |
 | Same-tier factual conflict in secrets/events | The conflicting old entry | Fix to be consistent | As needed |
@@ -49,6 +50,11 @@ When lore-weaver generates content, it may discover information that belongs in 
 ### To factions.md
 - Find the relevant faction section
 - Append under the appropriate subsection
+- Maintain the existing format
+
+### To locations.md
+- Find the relevant location section or append a new one
+- Add details discovered through lore (hidden areas, secret passages, etc.)
 - Maintain the existing format
 
 ### To another character's events.md

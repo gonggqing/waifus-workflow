@@ -24,7 +24,7 @@ Generate the "memory layer" for an existing character — events that shaped her
 | Upstream | Files | Required? |
 |---|---|---|
 | create-waifu | `basics.md`, `concept-arts.md`, scene files | **Yes** — character must exist |
-| world-building | `world.md`, `factions.md`, `timeline.md` | **Yes** — world context |
+| world-building | `world.md`, `factions.md`, `locations.md`, `timeline.md` | **Yes** — world context |
 | world-building | `characters.md` | Recommended — character registry |
 | Other characters | Their `basics.md` | Recommended — relationship context |
 | Other characters | Their `relationships.md` | Optional — cross-reference for asymmetric relationships |
@@ -46,7 +46,7 @@ Each run focuses on **1 worldview + 1 character**. Only when two characters have
 Read from `worldview/[slug]/`:
 
 1. **Target character:** `[char-slug]/basics.md` (full), `[char-slug]/concept-arts.md` (visual reference), all `[char-slug]/[scene].md` files
-2. **World context:** `world.md` (世界概览 + 世界规则), `factions.md` (势力 + 重要地点), `timeline.md` (历史事件)
+2. **World context:** `world.md` (世界概览 + 世界规则), `factions.md` (势力与派系), `locations.md` (重要地点), `timeline.md` (历史事件)
 3. **All characters in worldview:** Read every other character's `basics.md` — at minimum the 关联角色 section. If any character already has `relationships.md`, read that too for cross-reference
 
 If the target character already has lore files (Append mode), read them all first before generating anything.
@@ -181,6 +181,6 @@ worldview/[worldview-slug]/[character-slug]/
 
 **← create-waifu:** Optional final step — after character creation, ask if the user wants to run lore-weaver for depth
 **← edit-waifu:** After editing character background/personality, existing lore files may need sync — run in Append mode
-**↔ world-building:** Reads world context as input; writes back world-level discoveries to timeline.md / factions.md
+**↔ world-building:** Reads world context as input; writes back world-level discoveries to timeline.md / factions.md / locations.md
 **→ create-campaign:** Campaign can extract "hooks" from secrets.md — surface secrets are great social media material
 **↔ related characters:** When character A's lore involves character B, reads B's basics.md for consistency; if A's events have major impact on B, can append to B's events.md. When later running lore-weaver for B, reads A's relationships.md to see "A's view of B" as reference

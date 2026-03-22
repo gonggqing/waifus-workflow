@@ -1,6 +1,6 @@
 ---
 name: world-concept-art
-description: Generate environment and scene image prompts for a worldview — the visual foundation of the world itself (locations, architecture, atmosphere, lighting). Called automatically by world-building after creating or expanding world/factions files, or standalone when you want concept art for a world. Trigger on: "世界概念图", "world concept art", "场景提示词", "environment prompts", "世界视觉", "world visuals", "location art", "generate world art", "场景图", or when the user wants to visualize locations/environments rather than characters. Do NOT use for character image prompts — use waifu-generator instead.
+description: Generate environment and scene image prompts for a worldview — the visual foundation of the world itself (locations, architecture, atmosphere, lighting). Called automatically by world-building after creating or expanding world/locations files, or standalone when you want concept art for a world. Trigger on: "世界概念图", "world concept art", "场景提示词", "environment prompts", "世界视觉", "world visuals", "location art", "generate world art", "场景图", or when the user wants to visualize locations/environments rather than characters. Do NOT use for character image prompts — use waifu-generator instead.
 ---
 
 # World Concept Art
@@ -10,7 +10,7 @@ Generate environment/scene-level image prompts from worldview files. This skill 
 **Output:** `worldview/[slug]/concept-art/` folder with structured, reusable environment prompts.
 
 **Relationship to other skills:**
-- **Upstream:** world-building (provides world.md + factions.md as input)
+- **Upstream:** world-building (provides world.md + locations.md as input)
 - **Downstream consumers:** waifu-generator (scene backgrounds for character-in-context images), create-campaign (establishing shots, video backgrounds, mood pieces)
 - **Sibling:** waifu-generator (characters) vs. world-concept-art (environments) — they share platform adaptation logic and their outputs can be combined
 
@@ -37,11 +37,12 @@ Read from `worldview/[slug]/`:
   - Magic/tech visual manifestations (how does the world's power system look?)
   - Time period and architectural era
   - Overall mood and tonal cues
-- **`factions.md`** — extract from 重要地点 / Key Locations:
+- **`locations.md`** — extract from each location entry:
   - Each named location's description
   - Architectural style and materials
   - Atmosphere and function
   - Any faction-specific visual markers (banners, symbols, lighting)
+- **`factions.md`** (optional) — scan for faction-specific visual markers (banners, symbols, architectural influence) that affect location appearance
 
 If `concept-art/overview.md` already exists (Mode 2), read it to maintain consistency with existing visual decisions.
 
@@ -93,7 +94,7 @@ Write a concise visual specification that anchors all location prompts:
 
 ### locations.md — Per-Location Prompts
 
-For each location found in factions.md's 重要地点 section, generate multi-angle prompts:
+For each location found in `locations.md`, generate multi-angle prompts:
 
 ```markdown
 ### [地点名] — [English Name]
@@ -122,7 +123,7 @@ For each location found in factions.md's 重要地点 section, generate multi-an
 ```
 
 Prioritize locations that are:
-1. Explicitly described in factions.md with enough visual detail to work from
+1. Explicitly described in locations.md with enough visual detail to work from
 2. Likely to appear in character scenes (check if any character scenes reference them)
 3. Visually distinctive (skip generic locations like "a road" unless they're important)
 
@@ -191,7 +192,7 @@ worldview/[slug]/concept-art/
 
 When called after world-building expands an existing world:
 
-1. **New location added to factions.md** → append its section to `locations.md`
+1. **New location added to locations.md** → append its section to concept-art `locations.md`
 2. **Existing location description changed** → update that location's prompts in place, flag with `<!-- 🔄 updated: [reason] -->`
 3. **World overview/rules changed with visual impact** → update `overview.md`'s affected sections (color palette, lighting, etc.) and add a note: `<!-- ⚠️ visual foundation changed — existing location prompts may need refresh -->`
 4. **New atmospheric phenomenon or world event** → append to `atmosphere.md`
@@ -205,5 +206,5 @@ When called after world-building expands an existing world:
 Report:
 - Files created or updated
 - Number of locations with prompts
-- Any locations skipped (insufficient visual description) — suggest enriching them in factions.md
+- Any locations skipped (insufficient visual description) — suggest enriching them in locations.md
 - Whether overview.md visual foundation changed (affects existing prompts)

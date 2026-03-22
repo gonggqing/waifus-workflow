@@ -65,6 +65,7 @@ worldview/
 └── cyberpunk-liguang/
     ├── world.md
     ├── factions.md
+    ├── locations.md
     ├── timeline.md
     ├── characters.md
     └── wei-la/
@@ -137,8 +138,8 @@ Creates and maintains the `worldview/[slug]/` directories that give characters a
 > "世界观" · "world building" · "扩展世界观" · "update worldview" · "势力" · "时间线" · "添加地点"
 
 **Two modes:**
-- **Mode 1 — Create new worldview:** Called after the first character in a new world. Generates `world.md`, `factions.md`, `timeline.md`, `characters.md` from the character's backstory.
-- **Mode 2 — Expand existing worldview:** Appends a new character entry to `characters.md`, adds any new factions/locations/events. Never rewrites existing content.
+- **Mode 1 — Create new worldview:** Called after the first character in a new world. Generates `world.md`, `factions.md`, `locations.md`, `timeline.md`, `characters.md` from the character's backstory.
+- **Mode 2 — Expand existing worldview:** Appends a new character entry to `characters.md`, adds any new factions/locations/events to their respective files. Never rewrites existing content.
 
 **Key principle:** Only write what characters and stories have established. Contradictions are flagged with `<!-- ⚠️ 待协调 -->` rather than silently overwritten.
 

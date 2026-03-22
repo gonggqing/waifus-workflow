@@ -33,7 +33,7 @@ Before running a campaign, ensure these exist for the target worldview:
 
 | Upstream | Files | Purpose |
 |---|---|---|
-| world-building | `world.md`, `factions.md`, `characters.md` | World context + character registry |
+| world-building | `world.md`, `factions.md`, `locations.md`, `timeline.md`, `characters.md` | World context + character registry |
 | world-concept-art | `concept-art/overview.md`, `locations.md`, `atmosphere.md`, `details.md` | Environment/scene visual base for video backgrounds |
 | waifu-generator | Each character's `concept-arts.md` | Character visual base for image/video prompts |
 
@@ -48,12 +48,13 @@ If `concept-art/` doesn't exist, recommend running world-concept-art first — c
 Read the worldview and character files:
 
 1. **World context:** `worldview/[slug]/world.md` (世界摘要 + 世界概览 + 世界规则)
-2. **Factions & locations:** `worldview/[slug]/factions.md`
-3. **Character registry:** `worldview/[slug]/characters.md`
-4. **Selected characters' `basics.md`** — extract: 角色简介, 背景介绍 (外貌 + 个性特质 + 互动风格), 开场白, 场景
-5. **Selected characters' `concept-arts.md`** — extract: character base prompts + scene illustration prompts
-6. **World visuals:** `worldview/[slug]/concept-art/` — extract: composable keywords (背景层, 光线层, 氛围层) from `overview.md` and location prompts from `locations.md`
-7. **Scene files** as needed for dialogue material
+2. **Factions:** `worldview/[slug]/factions.md`
+3. **Locations:** `worldview/[slug]/locations.md`
+4. **Character registry:** `worldview/[slug]/characters.md`
+5. **Selected characters' `basics.md`** — extract: 角色简介, 背景介绍 (外貌 + 个性特质 + 互动风格), 开场白, 场景
+6. **Selected characters' `concept-arts.md`** — extract: character base prompts + scene illustration prompts
+7. **World visuals:** `worldview/[slug]/concept-art/` — extract: composable keywords (背景层, 光线层, 氛围层) from `overview.md` and location prompts from `locations.md`
+8. **Scene files** as needed for dialogue material
 
 ### Step 1 — 策略分析 / Strategy
 

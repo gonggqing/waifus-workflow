@@ -57,7 +57,7 @@ Pipeline: world-building (context read) → waifu-stories → waifu-generator �
 
 **`create-campaign` generates cross-platform marketing campaigns.** Input: worldview + character subset. Output: strategy docs, platform-specific copywriting (Reddit/Twitter/TikTok/小红书/Discord), image prompts, and AI video prompts with cut-based composition (12s per cut) and transition strategies (high contrast, irony, progressive reveal, etc.). Campaign files land under `worldview/[slug]/campaign/[campaign-slug]/`.
 
-**`waifu-lore-weaver` generates the deep memory layer** for existing characters. Input: 1 worldview + 1 character (+ related characters as context). Output: events.md (personal chronicle), secrets.md (layered secret map), relationships.md (private relationship map), diaries.md (first-person fragments). Supports write-back to upstream files (basics.md, timeline.md, factions.md) when important discoveries emerge. Two modes: Full Run (first time) and Append (incremental additions).
+**`waifu-lore-weaver` generates the deep memory layer** for existing characters. Input: 1 worldview + 1 character (+ related characters as context). Output: events.md (personal chronicle), secrets.md (layered secret map), relationships.md (private relationship map), diaries.md (first-person fragments). Supports write-back to upstream files (basics.md, timeline.md, factions.md, locations.md) when important discoveries emerge. Two modes: Full Run (first time) and Append (incremental additions).
 
 ## Character File Output Structure
 
@@ -67,7 +67,8 @@ All generated character files land under `worldview/[worldview-slug]/[character-
 worldview/
 └── [worldview-slug]/
     ├── world.md            ← 世界概览, 世界规则, 文化细节
-    ├── factions.md         ← 势力与派系, 重要地点
+    ├── factions.md         ← 势力与派系
+    ├── locations.md        ← 重要地点
     ├── timeline.md         ← append-only historical events
     ├── characters.md       ← index of all characters in this world
     ├── concept-art/        ← world environment prompts (from world-concept-art)

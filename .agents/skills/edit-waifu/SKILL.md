@@ -45,7 +45,7 @@ The user knows exactly what to change: "换个开场白", "add a library scene",
    - Seed dialogue → 初始对话 in `basics.md`
    - Scene → the specific `[scene-slug].md` file
    - Image prompts → `concept-arts.md` in the character folder
-   - World lore → `world.md`, `factions.md`, `timeline.md` in the worldview folder
+   - World lore → `world.md`, `factions.md`, `locations.md`, `timeline.md` in the worldview folder
 
 2. **Show the current content** of just that section (not the whole file)
 
@@ -106,7 +106,7 @@ User wants to modify world lore, factions, locations, or timeline.
 2. Follow world-building's principles:
    - **世界摘要 / World Abstract** — if the edit changes the world's structural identity (new faction, shifted power balance, new core rule), **rewrite the entire 世界摘要** to reflect the current state (≤300 chars, cap 500)
    - **世界概览 / World Overview** — integrate new information by rewriting the overview paragraph to stay coherent (not append)
-   - **factions.md / timeline.md** — append or modify specific entries
+   - **factions.md / locations.md / timeline.md** — append or modify specific entries
    - **Flag contradictions** with `<!-- ⚠️ 待协调：[issue] -->`
    - Match the world's prose voice (cyberpunk ≠ xianxia ≠ modern)
 3. If the change affects existing characters (e.g., a faction is renamed or dissolved), flag which character files need review

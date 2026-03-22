@@ -68,7 +68,7 @@ If no existing worldviews exist, omit the 已有世界观 block entirely.
 
 ### Step A3 — Handle Selection
 
-- **Number 1–6:** existing-world proposal picked — load full world context (world.md + characters.md + factions.md if relevant), proceed with that concept
+- **Number 1–6:** existing-world proposal picked — load full world context (world.md + characters.md + factions.md + locations.md if relevant), proceed with that concept
 - **Letter A–C:** new-world proposal picked — treat as a new worldview brief
 - **`0`:** fully random — choose genre and archetype at random, proceed immediately
 - **Free text:** parse the description; if it names or implies an existing world, attach to it; otherwise treat as a new worldview brief
@@ -184,7 +184,7 @@ A. 女   B. 男   C. 不限 / 中性
 - 虚拟世界: 顶级玩家、NPC觉醒者、GM管理员、公会会长、系统BUG化身、代练
 - 江湖武侠: 侠女、镖师、客栈老板娘、门派叛徒、衙门捕快、隐居剑客
 
-**If user chose an existing worldview:** also read `factions.md` from that folder now (if not already loaded), and list any factions/organizations as suggested occupation anchors (e.g., if the world has 净光教团, offer 圣骑士 as an option).
+**If user chose an existing worldview:** also read `factions.md` and `locations.md` from that folder now (if not already loaded), and list any factions/organizations as suggested occupation anchors (e.g., if the world has 净光教团, offer 圣骑士 as an option). Use locations as suggested scene settings.
 
 ---
 
@@ -278,6 +278,7 @@ Run stages in order. Narrate each stage briefly so the user knows what's happeni
 If the user selected an **existing worldview**, load context from `./worldview/[slug]/` following world-building's context loading order:
 - Always read `world.md` (世界摘要 / World Abstract gives a quick alignment snapshot; full 世界概览 / World Overview + 世界规则 / World Rules + 文化细节 / Cultural Details gives depth) + `characters.md`
 - Read `factions.md` if the character has faction affiliation
+- Read `locations.md` if the character references specific places
 - Read `timeline.md` if the character has historical backstory
 
 Use 世界摘要 / World Abstract as the source for the character's basics.md Section 2 (世界观 / Worldview) — copy directly, do not re-summarize.
@@ -313,7 +314,7 @@ Read `references/file-structure.md` for folder conventions and all file template
 - `concept-arts.md` — character + scene image prompts (from Stage 2)
 - `[scene-slug].md` — one file per scene
 
-**If the user selected a new worldview** (folder not yet created), create the worldview folder and character folder together now — don't create at root and move later. The `worldview/[worldview-slug]/` parent folder will be sparse at this point — world-building Stage 4 will populate `world.md`, `factions.md`, `timeline.md`, `characters.md` alongside it.
+**If the user selected a new worldview** (folder not yet created), create the worldview folder and character folder together now — don't create at root and move later. The `worldview/[worldview-slug]/` parent folder will be sparse at this point — world-building Stage 4 will populate `world.md`, `factions.md`, `locations.md`, `timeline.md`, `characters.md` alongside it.
 
 ### Stage 3b — 关系回写
 
