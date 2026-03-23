@@ -1,0 +1,58 @@
+{
+  "skill_name": "world-concept-art",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "给玄灵世界生成概念图提示词，用 Midjourney v8",
+      "expected_output": "Creates concept-art/ folder under worldview/xuanling/ with overview.md, locations.md, atmosphere.md, details.md. All prompts use --v 8 --raw suffix. overview.md has color palette, lighting system, atmospheric constants, style anchor, and composable keywords. locations.md has multi-angle prompts for each location found in the worldview's locations.md.",
+      "files": [
+        "worldview/xuanling/world.md",
+        "worldview/xuanling/locations.md",
+        "worldview/xuanling/factions.md"
+      ],
+      "expectations": [
+        "Creates worldview/xuanling/concept-art/overview.md with visual foundation sections",
+        "Creates worldview/xuanling/concept-art/locations.md with per-location multi-angle prompts",
+        "Creates worldview/xuanling/concept-art/atmosphere.md with time/weather overlays",
+        "Creates worldview/xuanling/concept-art/details.md with world-specific objects",
+        "All Midjourney prompts end with --v 8 --raw",
+        "Prompts are in English even though the worldview is Chinese",
+        "overview.md includes composable keyword snippets (background, lighting, atmosphere layers)",
+        "Each location has at least wide shot, medium shot, and one variant"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "generate world concept art for xuanling but output SDXL format prompts instead of Midjourney",
+      "expected_output": "Same concept-art/ structure but prompts use SDXL tag-based syntax with positive + negative prompts, quality tags like masterpiece/best quality, and no --v 8 --raw suffixes. Should include no_humans or equivalent negative tags for environment-only shots.",
+      "files": [
+        "worldview/xuanling/world.md",
+        "worldview/xuanling/locations.md",
+        "worldview/xuanling/factions.md"
+      ],
+      "expectations": [
+        "Prompts use comma-separated tag style (not natural language sentences)",
+        "Includes quality tags like masterpiece, best quality, highly detailed",
+        "Includes a negative prompt section or inline negatives",
+        "No --v 8 or --raw parameters in SDXL prompts",
+        "Negative prompts include people/characters exclusion tags (no_humans or similar)",
+        "overview.md composable keywords are adapted for SDXL tag format"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "帮末世·废土世界观生成场景提示词，这个世界比较偏二次元风格，请用 niji 7",
+      "expected_output": "Generates concept-art/ for moshi-feitu. Since there is no locations.md for this worldview, the skill should note insufficient location data and either extract locations from world.md/factions.md or report which files need enrichment. Prompts should use --niji 7 --raw for the anime/二次元 style request.",
+      "files": [
+        "worldview/moshi-feitu/world.md",
+        "worldview/moshi-feitu/factions.md"
+      ],
+      "expectations": [
+        "Uses --niji 7 --raw suffix since user requested anime/二次元 style",
+        "Handles missing locations.md gracefully — either extracts locations from other files or reports the gap",
+        "overview.md reflects anime/二次元 visual style in its style anchor",
+        "Provides feedback about missing locations.md and suggests enrichment"
+      ]
+    }
+  ]
+}

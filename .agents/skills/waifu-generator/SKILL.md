@@ -195,7 +195,8 @@ If generating for multiple platforms, repeat the full block per platform with a 
 - Night: `moonlight`, `city lights bokeh`, `cool blue tones`
 
 **Platform suffixes:**
-- Midjourney: append `--v 6.1 --style raw --ar 2:3`
+- Midjourney V8: append `--v 8 --raw --ar 2:3` (add `--hd` for 2K; no `--cref` in V8)
+- Midjourney Niji 7: append `--niji 7 --raw --ar 2:3` for anime/game/二次元 characters
 - SDXL/PixAI: prepend `masterpiece, best quality, highly detailed,`
 - Negative prompt for SDXL/PixAI/LiblibAI: see `references/platforms.md`
 

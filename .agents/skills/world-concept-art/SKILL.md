@@ -182,9 +182,9 @@ worldview/[slug]/concept-art/
 
 **Always include from overview.md:** the style anchor keywords and at least one composable keyword layer (background, lighting, or atmosphere) to maintain visual consistency across all generated images.
 
-**Quality tags:** append `4K, highly detailed` for SDXL/PixAI; use `--v 6.1 --style raw` for Midjourney. Follow the same platform conventions as waifu-generator's `references/platforms.md`.
+**Platform adaptation:** By default, generate prompts for **Midjourney V8 Alpha** (`--v 8`). Add `--raw` only when maximum prompt control is needed (technical/architectural shots, specific art style matching) — omit it for mood/atmosphere shots where MJ's aesthetic polish helps. If the user requests a different platform or the worldview is anime/二次元 style, adapt prompts per `references/platforms.md`. Supported platforms: MJ V8, Niji 7, Seedance (video), Nano-banana Pro, SDXL. See `references/platforms.md` for full syntax, parameters, aspect ratios, and per-platform examples.
 
-**Don't over-specify.** Leave room for the model's interpretation — 40-80 tokens per prompt is the sweet spot. Over-packed prompts cause muddy outputs.
+**Don't over-specify.** V8 handles detailed prompts better than previous versions, but still aim for 40-100 tokens per prompt. Leave room for the model's interpretation on non-essential details.
 
 ---
 

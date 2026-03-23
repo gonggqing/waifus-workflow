@@ -6,32 +6,109 @@ Detailed syntax, parameters, and tips for each supported platform.
 
 ## Midjourney
 
+Midjourney has multiple active model versions. Choose by content type:
+
+| Use Case | Model | Why |
+|---|---|---|
+| **General / realistic / environments** | V8 Alpha (`--v 8`) | Best prompt understanding, fastest, 2K `--hd` |
+| **Anime / game / 二次元 characters** | Niji 7 (`--niji 7`, V7 only) | Purpose-built for anime/illustration style |
+| **Character consistency via `--cref`** | V6 (`--v 6`) | Only version with `--cref` + `--cw` support |
+
 **Style:** Natural language, English preferred. Descriptive sentences work best.
+
+---
+
+### V8 Alpha (default for non-anime)
+
+Available on `alpha.midjourney.com` only (not Discord). Model may change — it's an alpha.
 
 **Prompt structure:**
 ```
-[subject description], [art style], [lighting], [composition], [mood] --ar 2:3 --v 6.1 --style raw --q 2
+[subject description], [art style], [lighting], [composition], [mood] --ar 2:3 --v 8 --raw
 ```
 
 **Key parameters:**
-- `--ar 2:3` — portrait aspect ratio (use `16:9` for landscape scenes)
-- `--v 6.1` — latest model (as of early 2025)
-- `--style raw` — less opinionated output, better for character consistency
-- `--q 2` — high quality
-- `--cref [url]` — character reference image for consistency across generations
-- `--sref [url]` — style reference
-- `--chaos 0` — low chaos = more predictable output
+- `--ar 2:3` — portrait (use `16:9` for landscape); HD max is 4:1
+- `--v 8` — V8 Alpha model, 4–5x faster, much better prompt adherence
+- `--raw` — removes default styling for maximum prompt control
+- `--hd` — 2K native resolution (2048px, no upscaling needed; 4x GPU cost; max AR 4:1)
+- `--sref [url/code]` — style reference (4x GPU cost; not compatible with `--hd` or `--q 4`)
+- `--chaos` — variation; `--weird` — unconventional; `--exp` — experimental
+- `--stylize` — MJ's aesthetic influence; `--tile` — seamless patterns
+- `--seed` — reproducible results (~99% identical)
+- `--q 4` — higher quality (4x GPU cost; only `1` or `4` in V8)
+- `"quoted text"` — renders beautiful text in the image
+
+**NOT supported in V8 Alpha:**
+- `--cref` / `--cw` (character reference) — use V6 for character consistency
+- `--no` (negative prompt parameter)
+- `::` multi-prompting / prompt weighting
+- Image prompts / `--iw` (image weight)
+- `--niji` — use `--niji 7` on V7 for anime
+- Upscalers / turbo mode
+
+**GPU cost multipliers (V8):**
+- `--hd` = 4x
+- `--sref` / moodboards = 4x
+- `--q 4` = 4x
+- `--hd` + `--q 4` = 16x
 
 **Tips:**
-- Put the most important descriptors first — MJ weights earlier tokens more
-- Use `::` for emphasis or de-emphasis: `silver hair::2` (boost), `wings::0` (suppress)
-- No negative prompts in MJ — rephrase as positive ("clean background" instead of "no background")
-- For character consistency across scenes, use `--cref` with a reference image once you have one
+- V8 is much better at following detailed directions — be specific and direct
+- Rephrase negatives as positives ("clean background" instead of trying to negate)
+- Personalization profiles and moodboards are more accurate than ever in V8
+- For 2K output, prefer `--hd` over upscaling (upscalers not available in V8)
 
-**Example portrait:**
+**Example portrait (V8):**
 ```
 silver-haired girl with amber eyes, black ribbon choker, school uniform, upper body portrait,
-soft smile, anime illustration style, detailed lineart, warm afternoon light, white background --ar 2:3 --v 6.1 --style raw --q 2
+soft smile, detailed illustration, warm afternoon light, white background --ar 2:3 --v 8 --raw
+```
+
+---
+
+### Niji 7 (anime / 二次元 characters)
+
+Niji models are developed with Spellbrush, focused on Eastern and anime aesthetics. Niji 7 (launched Jan 9, 2026) has its own website and Discord server.
+
+**What's new in Niji 7:**
+- **Coherency boost** — fine details like eyes, reflections, and small background elements are much clearer
+- **Better prompt adherence** — follows prompts more closely, good for specific designs and repeatable characters
+- **More literal** — broad or "vibey" prompts may not behave the same as older niji; be specific
+- **Cleaner, flatter look** — designed to highlight improved line work
+
+Use `--niji 7` for any anime, game, manga, or 二次元 style output.
+
+**Prompt structure:**
+```
+[subject description], [anime art style], [lighting], [composition], [mood] --ar 2:3 --niji 7 --raw
+```
+
+**When to use Niji 7 instead of V8:**
+- Character has anime/manga/game aesthetic
+- Cel shading, lineart, illustration style requested
+- The worldview is described as 二次元, anime, or game-style
+- User explicitly asks for anime/niji output
+
+**Tips:**
+- Be specific — Niji 7 is more literal than previous versions, vague prompts give weaker results
+- Lean into the cleaner line work for character sheets and consistent designs
+- Use `--raw` for maximum prompt control, same as V8
+
+**Example (Niji 7):**
+```
+silver-haired girl with amber eyes, black ribbon choker, school uniform, upper body portrait,
+soft smile, anime illustration style, detailed lineart, warm afternoon light, white background --ar 2:3 --niji 7 --raw
+```
+
+---
+
+### V6 (character consistency workflows)
+
+Use V6 only when `--cref` is needed for cross-image character consistency.
+
+```
+[prompt] --ar 2:3 --v 6 --style raw --cref [url] --cw 80
 ```
 
 ---
